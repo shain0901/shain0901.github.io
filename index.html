@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shain Holdsworth — Built</title>
+<meta name="description" content="Small, focused tools, mostly for NZ businesses. Sawubona, Voakt, and a few others.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #14171B;
+    --surface: #1B1E23;
+    --surface-raised: #22262C;
+    --text: #F2F1ED;
+    --text-muted: #8B8B85;
+    --accent: #E5300A;
+    --accent-wash: rgba(229, 48, 10, 0.12);
+    --status-muted: #8891A0;
+    --status-wash: rgba(136, 145, 160, 0.12);
+    --border: #2A2E34;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 28px; }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; padding: 96px 0 72px; overflow: hidden; }
+  .hero-ridge {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 90px;
+    opacity: 0.4; pointer-events: none;
+  }
+  .hero-inner { position: relative; }
+  .hero h1 {
+    font-family: var(--font-display); font-weight: 600; font-size: 42px;
+    letter-spacing: -0.01em; margin: 0 0 18px; color: var(--text);
+  }
+  .hero p {
+    font-size: 17px; color: var(--text-muted); max-width: 480px; margin: 0;
+  }
+  .hero p a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+  .hero p a:hover { border-bottom-color: var(--accent); }
+
+  /* ---------- Section headings ---------- */
+  .section { padding: 8px 0 56px; }
+  .section-label {
+    font-family: var(--font-body); font-size: 13px; color: var(--text-muted);
+    margin: 0 0 20px; padding-top: 32px; border-top: 1px solid var(--border);
+  }
+
+  /* ---------- Project rows ---------- */
+  .project {
+    display: flex; gap: 20px; align-items: baseline; padding: 22px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .project:first-of-type { border-top: 1px solid var(--border); }
+  .project-main { flex: 1; }
+  .project-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+  .project-name {
+    font-family: var(--font-display); font-weight: 600; font-size: 18px; margin: 0;
+  }
+  .project-desc { font-size: 14.5px; color: var(--text-muted); margin: 0; max-width: 480px; }
+  .status {
+    font-size: 12px; padding: 2px 9px; border-radius: 20px; font-family: var(--font-body);
+    white-space: nowrap;
+  }
+  .status-live { color: var(--accent); background: var(--accent-wash); }
+  .status-progress { color: var(--status-muted); background: var(--status-wash); }
+  .project-link {
+    font-size: 13.5px; color: var(--text-muted); text-decoration: none;
+    white-space: nowrap; align-self: center; border-bottom: 1px solid var(--border);
+  }
+  .project-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ---------- Case study (Sentinel) — deliberately not a card ---------- */
+  .case-study {
+    border-left: 2px solid var(--accent); padding: 4px 0 4px 22px; margin-top: 8px;
+  }
+  .case-study .project-name { margin-bottom: 8px; }
+  .case-study p { font-size: 14.5px; color: var(--text-muted); margin: 0 0 10px; max-width: 500px; }
+  .case-study p:last-child { margin-bottom: 0; }
+  .case-study .tag {
+    font-size: 12px; color: var(--text-muted);
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding: 40px 0 64px; font-size: 13.5px; color: var(--text-muted);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+  footer a { color: var(--text-muted); text-decoration: none; border-bottom: 1px solid var(--border); }
+  footer a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  @media (max-width: 560px) {
+    .hero { padding: 64px 0 56px; }
+    .hero h1 { font-size: 32px; }
+    .project { flex-direction: column; gap: 6px; }
+    .project-link { align-self: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <section class="hero">
+    <svg class="hero-ridge" viewBox="0 0 720 90" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,90 L70,38 L130,60 L210,18 L290,55 L360,30 L430,64 L510,24 L590,58 L660,40 L720,60 L720,90 Z" fill="none" stroke="#3A4048" stroke-width="1.5"/>
+    </svg>
+    <div class="hero-inner">
+      <h1>Shain Holdsworth</h1>
+      <p>I build small, focused tools — mostly for NZ businesses. Security, accommodation, and a few things just for the fun of building them. Based in Hanmer Springs.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Live</p>
+
+    <div class="project">
+      <div class="project-main">
+        <div class="project-head">
+          <h2 class="project-name">Sawubona</h2>
+          <span class="status status-live">Live</span>
+        </div>
+        <p class="project-desc">An AI phone assistant that answers after-hours calls for accommodation operators, so a missed call doesn't mean a missed booking.</p>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-main">
+        <div class="project-head">
+          <h2 class="project-name">Voakt</h2>
+          <span class="status status-live">Live</span>
+        </div>
+        <p class="project-desc">Turns voice memos, meeting recordings, and videos into clear action items and summaries.</p>
+      </div>
+      <a class="project-link" href="https://voakt.io" target="_blank" rel="noopener">voakt.io</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Still building</p>
+
+    <div class="project">
+      <div class="project-main">
+        <div class="project-head">
+          <h2 class="project-name">Roast My Website</h2>
+          <span class="status status-progress">In progress</span>
+        </div>
+        <p class="project-desc">An AI critique tool that tells you what's actually wrong with your website, not just what's technically broken.</p>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-main">
+        <div class="project-head">
+          <h2 class="project-name">WiFi Manager</h2>
+          <span class="status status-progress">In progress</span>
+        </div>
+        <p class="project-desc">A shared WiFi-credential tool built for Hanmer Holiday Homes' properties — one login, every property's network in one place, printable guest cards with QR codes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-label">Case study</p>
+
+    <div class="case-study">
+      <h2 class="project-name">Sentinel</h2>
+      <p>An internal operations platform built for Hanmer Security — manages customer sites, equipment inventory, and encrypted credentials behind a single dashboard, in daily use by their team.</p>
+      <p class="tag">Built and deployed for one client, not a public product.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span>&copy; 2026 Shain Holdsworth</span>
+    <a href="https://github.com/shain0901" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
