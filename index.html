@@ -4,116 +4,204 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shain Holdsworth — Built</title>
-<meta name="description" content="Small, focused tools, mostly for NZ businesses. Sawubona, Voakt, and a few others.">
+<meta name="description" content="Small, focused tools for NZ businesses — AI phone assistants, internal ops platforms, smart home and more. Built in Hanmer Springs.">
+<meta property="og:title" content="Shain Holdsworth — Built">
+<meta property="og:description" content="Small, focused tools for NZ businesses. Built by hand, shipped for real.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2316150F'/%3E%3Ctext x='12' y='46' font-family='Arial Black,Arial' font-weight='900' font-size='36' fill='%23F3F0E8'%3ESH%3C/text%3E%3Crect x='48' y='38' width='8' height='8' fill='%23E8A10C'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #14171B;
-    --surface: #1B1E23;
-    --surface-raised: #22262C;
-    --text: #F2F1ED;
-    --text-muted: #8B8B85;
-    --accent: #E5300A;
-    --accent-wash: rgba(229, 48, 10, 0.12);
-    --status-muted: #8891A0;
-    --status-wash: rgba(136, 145, 160, 0.12);
-    --border: #2A2E34;
-    --font-display: 'Space Grotesk', sans-serif;
-    --font-body: 'IBM Plex Sans', sans-serif;
+    --paper: #F3F0E8;
+    --paper-raised: #FBF9F4;
+    --paper-sunk: #E9E5DA;
+    --ink: #16150F;
+    --ink-soft: #57534A;
+    --ink-faint: #8A857A;
+    --rule: #D6D1C4;
+    --amber: #E8A10C;
+    --amber-deep: #8A5D00;
+    --amber-wash: rgba(232, 161, 12, 0.16);
+    --font-display: 'Archivo', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
   }
 
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font-body);
-    line-height: 1.6;
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--font-display); font-size: 16px; line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(var(--rule) 1px, transparent 1px);
+    background-size: 22px 22px; background-position: -11px -11px;
   }
   a { color: inherit; }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 0 28px; }
+  :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 28px; }
+  .mono { font-family: var(--font-mono); }
 
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  /* ---------- Top bar ---------- */
+  .topbar { display: flex; justify-content: space-between; align-items: center; padding: 22px 0; gap: 16px; }
+  .mark {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 38px; height: 38px; background: var(--ink); color: var(--paper);
+    font-weight: 800; font-size: 15px; border-radius: 6px; text-decoration: none;
+    position: relative; letter-spacing: -0.02em;
+  }
+  .mark::after { content: ""; position: absolute; right: 5px; bottom: 6px; width: 5px; height: 5px; background: var(--amber); }
+  .nav { display: flex; gap: 22px; font-family: var(--font-mono); font-size: 13px; }
+  .nav a { text-decoration: none; color: var(--ink-soft); }
+  .nav a:hover { color: var(--ink); }
 
   /* ---------- Hero ---------- */
-  .hero { position: relative; padding: 96px 0 72px; overflow: hidden; }
-  .hero-ridge {
-    position: absolute; left: 0; right: 0; bottom: 0; height: 90px;
-    opacity: 0.4; pointer-events: none;
-  }
-  .hero-inner { position: relative; }
+  .hero { padding: 72px 0 64px; border-bottom: 1.5px solid var(--ink); position: relative; }
+  .kicker { font-family: var(--font-mono); font-size: 13px; color: var(--ink-faint); margin: 0 0 18px; }
   .hero h1 {
-    font-family: var(--font-display); font-weight: 600; font-size: 42px;
-    letter-spacing: -0.01em; margin: 0 0 18px; color: var(--text);
+    font-size: clamp(44px, 8vw, 76px); font-weight: 800; line-height: 0.98;
+    letter-spacing: -0.035em; margin: 0 0 26px;
   }
-  .hero p {
-    font-size: 17px; color: var(--text-muted); max-width: 480px; margin: 0;
+  .hero h1 .dot { color: var(--amber); }
+  .hero .lede { font-size: 19px; font-weight: 500; color: var(--ink-soft); max-width: 560px; margin: 0 0 32px; }
+  .hero .lede strong { color: var(--ink); font-weight: 600; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono);
+    font-size: 14px; font-weight: 500; padding: 11px 18px; border-radius: 6px;
+    text-decoration: none; border: 1.5px solid var(--ink); cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease;
   }
-  .hero p a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
-  .hero p a:hover { border-bottom-color: var(--accent); }
+  .btn-primary { background: var(--ink); color: var(--paper); }
+  .btn-secondary { background: var(--paper-raised); color: var(--ink); }
+  .btn:hover { transform: translate(-2px, -2px); box-shadow: 3px 3px 0 var(--amber); }
+  .stamp {
+    position: absolute; right: 0; top: 78px; font-family: var(--font-mono); font-size: 11.5px;
+    color: var(--ink-soft); border: 1.5px dashed var(--ink-faint); padding: 8px 12px;
+    border-radius: 6px; transform: rotate(3deg); line-height: 1.5; text-align: center;
+  }
+  .stamp b { display: block; color: var(--ink); font-weight: 500; }
 
-  /* ---------- Section headings ---------- */
-  .section { padding: 8px 0 56px; }
-  .section-label {
-    font-family: var(--font-body); font-size: 13px; color: var(--text-muted);
-    margin: 0 0 20px; padding-top: 32px; border-top: 1px solid var(--border);
+  /* ---------- Sections ---------- */
+  section.block { padding: 64px 0 8px; }
+  .label {
+    font-family: var(--font-mono); font-size: 13px; color: var(--ink-faint);
+    margin: 0 0 8px; display: flex; align-items: center; gap: 10px;
   }
+  .label::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+  .block h2 { font-size: 32px; font-weight: 800; letter-spacing: -0.025em; margin: 0 0 28px; line-height: 1.1; }
 
-  /* ---------- Project rows ---------- */
+  /* ---------- Offer grid ---------- */
+  .offer-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  @media (max-width: 600px) { .offer-grid { grid-template-columns: 1fr; } }
+  .offer {
+    background: var(--paper-raised); border: 1.5px solid var(--ink); border-radius: 8px;
+    padding: 20px 20px 22px;
+  }
+  .offer .num { font-family: var(--font-mono); font-size: 12px; color: var(--amber-deep); margin: 0 0 12px; }
+  .offer h3 { font-size: 19px; font-weight: 700; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .offer p { font-size: 14.5px; color: var(--ink-soft); margin: 0; font-weight: 500; }
+
+  /* ---------- Project cards ---------- */
+  .projects { display: grid; gap: 18px; }
   .project {
-    display: flex; gap: 20px; align-items: baseline; padding: 22px 0;
-    border-bottom: 1px solid var(--border);
+    display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 0;
+    background: var(--paper-raised); border: 1.5px solid var(--ink); border-radius: 8px; overflow: hidden;
   }
-  .project:first-of-type { border-top: 1px solid var(--border); }
-  .project-main { flex: 1; }
-  .project-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
-  .project-name {
-    font-family: var(--font-display); font-weight: 600; font-size: 18px; margin: 0;
+  .thumb { background: var(--paper-sunk); border-right: 1.5px solid var(--ink); position: relative; min-height: 180px; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; position: absolute; inset: 0; }
+  .thumb-fallback {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 64px; font-weight: 800; color: var(--rule); letter-spacing: -0.04em;
   }
-  .project-desc { font-size: 14.5px; color: var(--text-muted); margin: 0; max-width: 480px; }
-  .status {
-    font-size: 12px; padding: 2px 9px; border-radius: 20px; font-family: var(--font-body);
-    white-space: nowrap;
+  .thumb-fallback span { color: var(--amber); }
+  .project-body { padding: 22px 24px; display: flex; flex-direction: column; }
+  .project-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+  .project h3 { font-size: 23px; font-weight: 800; margin: 0; letter-spacing: -0.02em; }
+  .tag {
+    font-family: var(--font-mono); font-size: 11px; font-weight: 500; padding: 3px 8px;
+    border-radius: 4px; text-transform: uppercase; letter-spacing: 0.04em;
   }
-  .status-live { color: var(--accent); background: var(--accent-wash); }
-  .status-progress { color: var(--status-muted); background: var(--status-wash); }
+  .tag-live { background: var(--amber); color: var(--ink); }
+  .tag-wip { background: transparent; color: var(--ink-soft); border: 1.2px dashed var(--ink-faint); }
+  .project p { font-size: 15px; color: var(--ink-soft); margin: 0 0 14px; font-weight: 500; }
+  .stack { font-family: var(--font-mono); font-size: 12px; color: var(--ink-faint); margin-top: auto; }
   .project-link {
-    font-size: 13.5px; color: var(--text-muted); text-decoration: none;
-    white-space: nowrap; align-self: center; border-bottom: 1px solid var(--border);
+    font-family: var(--font-mono); font-size: 13.5px; font-weight: 500; text-decoration: none;
+    color: var(--ink); margin-top: 12px; align-self: flex-start; border-bottom: 1.5px solid var(--amber);
   }
-  .project-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .project-link:hover { background: var(--amber-wash); }
+  .project.wip { border-style: dashed; }
+  .project.wip .thumb { border-right-style: dashed; }
 
-  /* ---------- Case study (Sentinel) — deliberately not a card ---------- */
-  .case-study {
-    border-left: 2px solid var(--accent); padding: 4px 0 4px 22px; margin-top: 8px;
+  /* ---------- Case study ---------- */
+  .case {
+    background: var(--ink); color: var(--paper); border-radius: 8px; padding: 32px 32px 30px;
+    display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 32px;
   }
-  .case-study .project-name { margin-bottom: 8px; }
-  .case-study p { font-size: 14.5px; color: var(--text-muted); margin: 0 0 10px; max-width: 500px; }
-  .case-study p:last-child { margin-bottom: 0; }
-  .case-study .tag {
-    font-size: 12px; color: var(--text-muted);
+  .case .label { color: #A8A396; }
+  .case .label::after { background: #3A382F; }
+  .case h3 { font-size: 30px; font-weight: 800; margin: 4px 0 12px; letter-spacing: -0.02em; }
+  .case p { color: #C9C4B6; font-size: 15px; margin: 0 0 12px; font-weight: 500; }
+  .case-facts { list-style: none; margin: 0; padding: 0; font-family: var(--font-mono); font-size: 13px; }
+  .case-facts li { padding: 10px 0; border-bottom: 1px solid #3A382F; display: flex; justify-content: space-between; gap: 12px; }
+  .case-facts li:last-child { border-bottom: 0; }
+  .case-facts span:first-child { color: #A8A396; }
+  .case-facts span:last-child { color: var(--paper); text-align: right; }
+  .case .note { font-family: var(--font-mono); font-size: 12px; color: var(--amber); margin: 16px 0 0; }
+
+  /* ---------- Story ---------- */
+  .story { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
+  .story p { font-size: 16.5px; color: var(--ink-soft); font-weight: 500; margin: 0 0 14px; }
+  .story p strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Contact ---------- */
+  .contact { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 32px; align-items: start; }
+  .contact-intro p { font-size: 16.5px; color: var(--ink-soft); font-weight: 500; margin: 0 0 14px; }
+  form {
+    background: var(--paper-raised); border: 1.5px solid var(--ink); border-radius: 8px;
+    padding: 22px; display: grid; gap: 14px;
   }
+  .field { display: grid; gap: 6px; }
+  .field label { font-family: var(--font-mono); font-size: 12.5px; color: var(--ink-soft); }
+  input, textarea, select {
+    font: inherit; font-size: 15px; font-weight: 500; color: var(--ink); background: var(--paper);
+    border: 1.5px solid var(--rule); border-radius: 6px; padding: 10px 12px; width: 100%;
+  }
+  input:focus, textarea:focus, select:focus { outline: none; border-color: var(--ink); box-shadow: 3px 3px 0 var(--amber); }
+  textarea { min-height: 120px; resize: vertical; }
+  .hp { position: absolute; left: -9999px; }
+  .form-status { font-family: var(--font-mono); font-size: 13px; margin: 0; min-height: 1.2em; }
+  .form-status.ok { color: #3B6D11; }
+  .form-status.err { color: #A32D2D; }
 
   /* ---------- Footer ---------- */
   footer {
-    padding: 40px 0 64px; font-size: 13.5px; color: var(--text-muted);
+    margin-top: 72px; padding: 24px 0 48px; border-top: 1.5px solid var(--ink);
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    font-family: var(--font-mono); font-size: 12.5px; color: var(--ink-faint);
   }
-  footer a { color: var(--text-muted); text-decoration: none; border-bottom: 1px solid var(--border); }
-  footer a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  footer a { text-decoration: none; border-bottom: 1px solid var(--rule); }
+  footer a:hover { color: var(--ink); border-bottom-color: var(--amber); }
 
-  @media (max-width: 560px) {
-    .hero { padding: 64px 0 56px; }
-    .hero h1 { font-size: 32px; }
-    .project { flex-direction: column; gap: 6px; }
-    .project-link { align-self: flex-start; }
+  /* ---------- Responsive ---------- */
+  @media (max-width: 760px) {
+    .stamp { display: none; }
+    .project { grid-template-columns: 1fr; }
+    .thumb { border-right: 0; border-bottom: 1.5px solid var(--ink); min-height: 170px; }
+    .project.wip .thumb { border-bottom-style: dashed; }
+    .case, .story, .contact { grid-template-columns: 1fr; gap: 20px; }
   }
-
+  @media (max-width: 520px) {
+    .wrap { padding: 0 16px; }
+    .nav { gap: 14px; font-size: 12px; }
+    .hero { padding: 48px 0 48px; }
+    .hero .lede { font-size: 17px; }
+    .block h2 { font-size: 27px; }
+    .case { padding: 24px 20px; }
+  }
   @media (prefers-reduced-motion: reduce) {
-    * { scroll-behavior: auto !important; }
+    html { scroll-behavior: auto; }
+    .btn { transition: none; }
   }
 </style>
 </head>
@@ -121,81 +209,246 @@
 
 <div class="wrap">
 
-  <section class="hero">
-    <svg class="hero-ridge" viewBox="0 0 720 90" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0,90 L70,38 L130,60 L210,18 L290,55 L360,30 L430,64 L510,24 L590,58 L660,40 L720,60 L720,90 Z" fill="none" stroke="#3A4048" stroke-width="1.5"/>
-    </svg>
-    <div class="hero-inner">
-      <h1>Shain Holdsworth</h1>
-      <p>I build small, focused tools — mostly for NZ businesses. Security, accommodation, and a few things just for the fun of building them. Based in Hanmer Springs.</p>
+  <header class="topbar">
+    <a class="mark" href="#top" aria-label="Shain Holdsworth — home">SH</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#offer">Offer</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="top">
+    <p class="kicker">// built by hand, shipped for real</p>
+    <h1>Shain<br>Holdsworth<span class="dot">.</span></h1>
+    <p class="lede">I build small, focused tools — mostly for <strong>NZ businesses</strong>. AI phone assistants, internal ops platforms, and the odd thing just for the fun of building it.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#work">See the work →</a>
+      <a class="btn btn-secondary" href="#contact">Get in touch</a>
     </div>
+    <div class="stamp" aria-hidden="true"><b>Made in</b>Hanmer Springs, NZ</div>
   </section>
 
-  <section class="section">
-    <p class="section-label">Live</p>
-
-    <div class="project">
-      <div class="project-main">
-        <div class="project-head">
-          <h2 class="project-name">Sawubona</h2>
-          <span class="status status-live">Live</span>
-        </div>
-        <p class="project-desc">An AI phone assistant that answers after-hours calls for accommodation operators, so a missed call doesn't mean a missed booking.</p>
+  <!-- ===================== OFFER ===================== -->
+  <section class="block" id="offer">
+    <p class="label">01 / what I offer</p>
+    <h2>Practical tools, built around how you actually work.</h2>
+    <div class="offer-grid">
+      <div class="offer">
+        <p class="num">— custom tools</p>
+        <h3>Internal ops platforms</h3>
+        <p>Replace the spreadsheet-and-sticky-note system with one dashboard your team actually uses every day.</p>
       </div>
-    </div>
-
-    <div class="project">
-      <div class="project-main">
-        <div class="project-head">
-          <h2 class="project-name">Voakt</h2>
-          <span class="status status-live">Live</span>
-        </div>
-        <p class="project-desc">Turns voice memos, meeting recordings, and videos into clear action items and summaries.</p>
+      <div class="offer">
+        <p class="num">— ai voice</p>
+        <h3>AI phone assistants</h3>
+        <p>An assistant that answers after-hours calls, knows your properties or services, and only wakes you when it matters.</p>
       </div>
-      <a class="project-link" href="https://voakt.io" target="_blank" rel="noopener">voakt.io</a>
-    </div>
-  </section>
-
-  <section class="section">
-    <p class="section-label">Still building</p>
-
-    <div class="project">
-      <div class="project-main">
-        <div class="project-head">
-          <h2 class="project-name">Roast My Website</h2>
-          <span class="status status-progress">In progress</span>
-        </div>
-        <p class="project-desc">An AI critique tool that tells you what's actually wrong with your website, not just what's technically broken.</p>
+      <div class="offer">
+        <p class="num">— web apps</p>
+        <h3>Small SaaS and web apps</h3>
+        <p>From idea to live product — hosting, logins, payments, the boring bits that make it real.</p>
       </div>
-    </div>
-
-    <div class="project">
-      <div class="project-main">
-        <div class="project-head">
-          <h2 class="project-name">WiFi Manager</h2>
-          <span class="status status-progress">In progress</span>
-        </div>
-        <p class="project-desc">A shared WiFi-credential tool built for Hanmer Holiday Homes' properties — one login, every property's network in one place, printable guest cards with QR codes.</p>
+      <div class="offer">
+        <p class="num">— smart home</p>
+        <h3>Smart home integration</h3>
+        <p>Lighting, heating, security and sensors working together. Early days — I'm building this out now with Home Assistant.</p>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <p class="section-label">Case study</p>
+  <!-- ===================== LIVE WORK ===================== -->
+  <section class="block" id="work">
+    <p class="label">02 / live</p>
+    <h2>Out in the world.</h2>
+    <div class="projects">
 
-    <div class="case-study">
-      <h2 class="project-name">Sentinel</h2>
-      <p>An internal operations platform built for Hanmer Security — manages customer sites, equipment inventory, and encrypted credentials behind a single dashboard, in daily use by their team.</p>
-      <p class="tag">Built and deployed for one client, not a public product.</p>
+      <article class="project">
+        <div class="thumb">
+          <div class="thumb-fallback" aria-hidden="true">S<span>.</span></div>
+          <img src="images/sawubona.png" alt="Screenshot of Sawubona" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="project-body">
+          <div class="project-head"><h3>Sawubona</h3><span class="tag tag-live">Live</span></div>
+          <p>An AI phone assistant that answers after-hours calls for accommodation operators — so a missed call doesn't mean a missed booking, and the on-call manager only gets woken for real emergencies.</p>
+          <span class="stack">Python · Twilio · ElevenLabs · OpenAI</span>
+          <a class="project-link" href="https://sawubona.io" target="_blank" rel="noopener">sawubona.io ↗</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="thumb">
+          <div class="thumb-fallback" aria-hidden="true">V<span>.</span></div>
+          <img src="images/voakt.png" alt="Screenshot of Voakt" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="project-body">
+          <div class="project-head"><h3>Voakt</h3><span class="tag tag-live">Live</span></div>
+          <p>Turns voice memos, meeting recordings, and videos into clear action items, decisions, and summaries — with calendar exports and a chat you can ask about your notes.</p>
+          <span class="stack">Flask · Whisper · GPT · PWA</span>
+          <a class="project-link" href="https://voakt.com" target="_blank" rel="noopener">voakt.com ↗</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===================== IN PROGRESS ===================== -->
+  <section class="block">
+    <p class="label">03 / on the bench</p>
+    <h2>Still building.</h2>
+    <div class="projects">
+
+      <article class="project wip">
+        <div class="thumb">
+          <div class="thumb-fallback" aria-hidden="true">D<span>.</span></div>
+          <img src="images/sawubona-dispatcher.png" alt="Screenshot of Sawubona Dispatcher" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="project-body">
+          <div class="project-head"><h3>Sawubona Dispatcher</h3><span class="tag tag-wip">In progress</span></div>
+          <p>An after-hours AI dispatcher for trades businesses, starting with electricians. It answers the call, works out whether it's a real emergency, and gets the right job to the on-call sparky.</p>
+          <span class="stack">Python · Twilio · ElevenLabs · OpenAI</span>
+        </div>
+      </article>
+
+      <article class="project wip">
+        <div class="thumb">
+          <div class="thumb-fallback" aria-hidden="true">R<span>.</span></div>
+          <img src="images/roast-my-website.png" alt="Screenshot of Roast My Website" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="project-body">
+          <div class="project-head"><h3>Roast My Website</h3><span class="tag tag-wip">In progress</span></div>
+          <p>An AI critique tool that tells you what's actually wrong with your website — not just what's technically broken.</p>
+          <span class="stack">Flask · BeautifulSoup · Claude</span>
+        </div>
+      </article>
+
+      <article class="project wip">
+        <div class="thumb">
+          <div class="thumb-fallback" aria-hidden="true">W<span>.</span></div>
+          <img src="images/wifi-manager.png" alt="Screenshot of WiFi Manager" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="project-body">
+          <div class="project-head"><h3>WiFi Manager</h3><span class="tag tag-wip">In progress</span></div>
+          <p>Shared WiFi credentials for a holiday-home management company — one login, every property's network in one place, printable guest cards with QR codes.</p>
+          <span class="stack">FastAPI · Postgres · React</span>
+        </div>
+      </article>
+
+      <article class="project wip">
+        <div class="thumb">
+          <div class="thumb-fallback" aria-hidden="true">H<span>.</span></div>
+          <img src="images/home-assistant.png" alt="Screenshot of a Home Assistant dashboard" loading="lazy" onerror="this.remove()">
+        </div>
+        <div class="project-body">
+          <div class="project-head"><h3>Smart home with Home Assistant</h3><span class="tag tag-wip">Just started</span></div>
+          <p>Early experiments tying lighting, heating, cameras and sensors into one system — arrival-triggered scenes, alerts that make sense. Learning in public.</p>
+          <span class="stack">Home Assistant · Zigbee · automations</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===================== CASE STUDY ===================== -->
+  <section class="block">
+    <div class="case">
+      <div>
+        <p class="label">04 / case study</p>
+        <h3>Sentinel</h3>
+        <p>A security installation company was tracking customer sites, equipment and access credentials across scattered notes and memory. I built them a private operations platform that puts every site, device and encrypted credential behind one login.</p>
+        <p>It's in daily use by their team — techs look up a site on the road instead of phoning the office.</p>
+        <p class="note">// built for one client, not a public product</p>
+      </div>
+      <ul class="case-facts">
+        <li><span>Client</span><span>Security installer, North Canterbury</span></li>
+        <li><span>Scope</span><span>Sites, equipment, credentials</span></li>
+        <li><span>Security</span><span>Encrypted at rest, rate-limited login</span></li>
+        <li><span>Stack</span><span>Flask · SQLite · Nginx</span></li>
+        <li><span>Ops</span><span>Daily automated backups</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== STORY ===================== -->
+  <section class="block">
+    <p class="label">05 / how I got here</p>
+    <h2>Not the usual route.</h2>
+    <div class="story">
+      <p>I wrote my first HTML and JavaScript a couple of decades ago, then spent years in <strong>operations</strong> — security installs, property maintenance, the jobs where things break at 2am.</p>
+      <p>That's what I build for now. <strong>Real problems from real local businesses</strong>, turned into tools that keep working when nobody's watching — built with modern AI as a collaborator, and shipped, not just prototyped.</p>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="block" id="contact">
+    <p class="label">06 / contact</p>
+    <h2>Got a problem worth a tool?</h2>
+    <div class="contact">
+      <div class="contact-intro">
+        <p>Tell me what's eating your time. Small, specific problems are my favourite kind.</p>
+        <p class="mono" style="font-size:13px;color:var(--ink-faint)">// I usually reply within a day or two.</p>
+      </div>
+      <!-- Replace YOUR_FORM_ID with your Formspree form ID (formspree.io → New form) -->
+      <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" placeholder="Alex Smith" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="alex@business.co.nz" required>
+        </div>
+        <div class="field">
+          <label for="topic">What's it about?</label>
+          <select id="topic" name="topic">
+            <option>A custom tool for my business</option>
+            <option>AI phone assistant</option>
+            <option>Smart home</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="We spend every Monday copying bookings into a spreadsheet…" required></textarea>
+        </div>
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-primary" type="submit" style="justify-self:start">Send it →</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 
   <footer>
-    <span>&copy; 2026 Shain Holdsworth</span>
-    <a href="https://github.com/shain0901" target="_blank" rel="noopener">GitHub</a>
+    <span>© 2026 Shain Holdsworth · Hanmer Springs, NZ</span>
+    <a href="https://github.com/shain0901" target="_blank" rel="noopener">GitHub ↗</a>
   </footer>
 
 </div>
+
+<script>
+  (function () {
+    var form = document.getElementById('contact-form');
+    var status = document.getElementById('form-status');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      status.className = 'form-status';
+      var name = form.name.value.trim(), email = form.email.value.trim(), msg = form.message.value.trim();
+      if (!name || !email || !msg) { status.textContent = 'Fill in your name, email and a message first.'; status.classList.add('err'); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.textContent = "That email doesn't look right."; status.classList.add('err'); return; }
+      if (form.action.indexOf('YOUR_FORM_ID') !== -1) { status.textContent = "Form isn't connected yet — check back soon."; status.classList.add('err'); return; }
+      status.textContent = 'Sending…';
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
+        .then(function (r) {
+          if (r.ok) { form.reset(); status.textContent = "Sent. I'll be in touch soon."; status.classList.add('ok'); }
+          else { throw new Error(); }
+        })
+        .catch(function () { status.textContent = "Couldn't send that. Try again in a minute."; status.classList.add('err'); });
+    });
+    form.querySelectorAll('input, textarea').forEach(function (el) {
+      el.addEventListener('input', function () { if (status.classList.contains('err')) { status.textContent = ''; status.className = 'form-status'; } });
+    });
+  })();
+</script>
 
 </body>
 </html>
