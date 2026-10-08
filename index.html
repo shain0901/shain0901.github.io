@@ -107,11 +107,11 @@
   /* ---------- Project cards ---------- */
   .projects { display: grid; gap: 18px; }
   .project {
-    display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 0;
+    display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 0;
     background: var(--paper-raised); border: 1.5px solid var(--ink); border-radius: 8px; overflow: hidden;
   }
   .thumb { background: var(--paper-sunk); border-right: 1.5px solid var(--ink); position: relative; min-height: 180px; }
-  .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; position: absolute; inset: 0; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; position: absolute; inset: 0; }
   .thumb-fallback {
     position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
     font-size: 64px; font-weight: 800; color: var(--rule); letter-spacing: -0.04em;
@@ -269,7 +269,7 @@
       <article class="project">
         <div class="thumb">
           <div class="thumb-fallback" aria-hidden="true">S<span>.</span></div>
-          <img src="images/sawubona.png" alt="Screenshot of Sawubona" loading="lazy" onerror="this.remove()">
+          <img style="object-position:left center" src="images/sawubona.jpg" alt="Screenshot of Sawubona" loading="lazy" onerror="this.remove()">
         </div>
         <div class="project-body">
           <div class="project-head"><h3>Sawubona</h3><span class="tag tag-live">Live</span></div>
@@ -282,7 +282,7 @@
       <article class="project">
         <div class="thumb">
           <div class="thumb-fallback" aria-hidden="true">V<span>.</span></div>
-          <img src="images/voakt.png" alt="Screenshot of Voakt" loading="lazy" onerror="this.remove()">
+          <img src="images/voakt.jpg" alt="Screenshot of Voakt" loading="lazy" onerror="this.remove()">
         </div>
         <div class="project-body">
           <div class="project-head"><h3>Voakt</h3><span class="tag tag-live">Live</span></div>
@@ -304,7 +304,7 @@
       <article class="project wip">
         <div class="thumb">
           <div class="thumb-fallback" aria-hidden="true">D<span>.</span></div>
-          <img src="images/sawubona-dispatcher.png" alt="Screenshot of Sawubona Dispatcher" loading="lazy" onerror="this.remove()">
+          <img style="object-position:center" src="images/sawubona-dispatcher.jpg" alt="Screenshot of Sawubona Dispatcher" loading="lazy" onerror="this.remove()">
         </div>
         <div class="project-body">
           <div class="project-head"><h3>Sawubona Dispatcher</h3><span class="tag tag-wip">In progress</span></div>
@@ -328,7 +328,7 @@
       <article class="project wip">
         <div class="thumb">
           <div class="thumb-fallback" aria-hidden="true">W<span>.</span></div>
-          <img src="images/wifi-manager.png" alt="Screenshot of WiFi Manager" loading="lazy" onerror="this.remove()">
+          <img style="object-position:left top" src="images/wifi-manager.jpg" alt="Screenshot of WiFi Manager" loading="lazy" onerror="this.remove()">
         </div>
         <div class="project-body">
           <div class="project-head"><h3>WiFi Manager</h3><span class="tag tag-wip">In progress</span></div>
